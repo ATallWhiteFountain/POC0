@@ -1,1 +1,8 @@
 env/
+src/main.py
+nbptdd/src/__pycache__
+nbptdd/test/__pycache__
+failure.png
+nbptdd.egg-info
+.mypy_cache
+output/

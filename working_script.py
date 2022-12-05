@@ -17,7 +17,6 @@ def get_df_from_table(table: dict) -> pd.DataFrame:
 TABLE_A_URI = "http://api.nbp.pl/api/exchangerates/tables/a?format=json/"
 TABLE_B_URI = "http://api.nbp.pl/api/exchangerates/tables/b?format=json/"
 
-
 # uzyskaj DataFrame'y
 df_a = get_df_from_table(get_table(TABLE_A_URI))
 df_b = get_df_from_table(get_table(TABLE_B_URI))
