@@ -5,7 +5,6 @@ from pathlib import Path
 import pandas as pd
 from nbptdd.src.produce_csv_output import ProduceCsvOutput
 
-# > saved file must be csv, must have human-readable run date
 
 class ProduceCsvOutputTest(unittest.TestCase):
 
