@@ -6,3 +6,4 @@ failure.png
 nbptdd.egg-info
 .mypy_cache
 output/
+.coverage
