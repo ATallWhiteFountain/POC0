@@ -8,9 +8,11 @@ class ApiClient():
 
     response: str = None
 
+
     def get(self, resource_uri: str) -> int:
         self.response = get(resource_uri)
         return self.response.status_code
+
 
     def getDictData(self) -> Optional[dict]:
         if self.response:

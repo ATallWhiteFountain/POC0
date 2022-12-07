@@ -18,6 +18,7 @@ def store_currency_exchanges(tables: list) -> Optional[str]:
     produce_csv_output = ProduceCsvOutput()
     return produce_csv_output.save_df(final_df, './output/', 'currency_exchange.csv')
 
+
 if __name__ == '__main__':
     TABLE_A_URI = "http://api.nbp.pl/api/exchangerates/tables/a?format=json/"
     TABLE_B_URI = "http://api.nbp.pl/api/exchangerates/tables/b?format=json/"
