@@ -1,28 +1,31 @@
 from dataclasses import dataclass
-import pandas as pd
 
 
 @dataclass
 class CombineData():
     
 
-    def load_df_from_dict(self, data_dict: dict) -> pd.DataFrame:
-        if isinstance(data_dict, dict):
-            df = pd.DataFrame(data_dict)
-            df = self.__melt(df)
-            return df
+    def get_list_of_dicts(self, data: dict) -> list[dict]:
+        if isinstance(data, dict):
+            one_layer_data = {key:data[key] for key in data if not isinstance(data[key], list)}
+            list_of_dicts = []
+            for k, v in data.items():
+                if isinstance(v, list):
+                    for sub_dict in v:
+                        product = one_layer_data | sub_dict
+                        list_of_dicts.append(product)
+            return list_of_dicts
         else:
             return None
 
 
-    def union_datasets(self, df_a: pd.DataFrame, df_b: pd.DataFrame) -> pd.DataFrame:
-        if isinstance(df_a, pd.DataFrame) and isinstance(df_b, pd.DataFrame):
-            return pd.concat([df_a, df_b])
+    def union_dicts(self, list_a: list[dict], list_b: list[dict]) -> list[dict]:
+        if isinstance(list_a, list) and isinstance(list_b, list):
+            product = list_a + list_b
+            final_product = []
+            for item in product:
+                if isinstance(item, dict):
+                    final_product.append(item)
+            return final_product
         else:
             return None
-
-
-    def __melt(self, df: pd.DataFrame) -> pd.DataFrame:
-        df[['currency', 'code', 'mid']] = pd.DataFrame(df['rates'].tolist(), index=df.index)
-        df = df.drop('rates', axis=1)
-        return df
